@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_thread', function (Blueprint $table) {
+        Schema::create('komentar', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_kategori');
-            $table->enum('status',['tampilkan', 'tidak_ditampilkan'])
+            $table->string('id_post');
+            $table->string('id_user');
+            $table->string('isi_komentar');
+            $table->enum('status',['tampilkan', 'tidak_ditampilkan', 'dihapus'])
             ->default('tampilkan');
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_thread');
+        Schema::dropIfExists('komentar');
     }
 };

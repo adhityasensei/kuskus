@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_thread', function (Blueprint $table) {
+        Schema::create('iklan', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_kategori');
-            $table->enum('status',['tampilkan', 'tidak_ditampilkan'])
-            ->default('tampilkan');
+            $table->string('judul_iklan');
+            $table->longText('deskripsi');
+            $table->string('foto');$table->string('foto')->default('foto/iklan/Default_Iklan.png');
+            $table->string('created_by');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_thread');
+        Schema::dropIfExists('iklan');
     }
 };

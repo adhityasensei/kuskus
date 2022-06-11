@@ -37,6 +37,11 @@ Route::get('/daftar', function(){
     return view('form_register');
 });
 
+//Percobaan ID Kategori
+Route::get('/kategori', function(){
+    return view ('id_kategori');
+});
+
 
 //Authenticate
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -50,3 +55,4 @@ Route::get('/register',[LoginController::class,'register']);
 Route::post('/register/add',[LoginController::class,'add_user']);
 
 Route::post('/logout',[LoginController::class,'logout']);
+
