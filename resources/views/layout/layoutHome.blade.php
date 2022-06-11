@@ -4,8 +4,10 @@
 @include('template.nav')
 <!-- Banner-->
 @include('template.banner')
-<!-- Section kiri-->
-@yield('content.leftcontent')
+<!-- subnav-->
+@include('template.subnav')
+<!-- Section content-->
+@yield('content')
 <!-- Section kanan-->
 @yield('content.rightcontent')
 <!-- Footer-->

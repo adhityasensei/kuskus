@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_post', function (Blueprint $table) {
+        Schema::create('thread', function (Blueprint $table) {
             $table->id();
             $table->integer('id_kategori');
             $table->string('judul');
-            $table->string('isi_post');
-            $table->string('foto');
+            $table->longText('isi_thread');
             $table->string('id_user');
-            $table->integer('view');
+            $table->integer('view_count')->default('0');
+            $table->integer('komentar_count')->default('0');
+            $table->enum('status',['tampilkan', 'tidak_ditampilkan', 'dihapus']);
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_post');
+        Schema::dropIfExists('thread');
     }
 };

@@ -10,8 +10,8 @@
   <form method="POST" action="/doLogin">
       @csrf
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="username">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="email">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
@@ -19,5 +19,6 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <a href="{{ url('/formuser')}}">Belum Punya Akun?</a>  
 </div>
 @endsection

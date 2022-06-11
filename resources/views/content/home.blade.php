@@ -3,5 +3,12 @@
 @section('title', 'Kuskus Food Forum')
 
 @section('content')
-{{Auth::check()}}
+<style></style>
+<div class="container">
+    <div class="col-lg-8" style="background-color:white">
+        <div class="container">
+            test
+        </div>
+    </div>
+</div>
 @endsection
