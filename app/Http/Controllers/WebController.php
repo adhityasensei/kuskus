@@ -5,16 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AdminCategory;
 use App\Models\Thread;
+use App\Models\Iklan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class WebController extends Controller
 {
     //untuk semua role user
     public function index(){
-        $category =  AdminCategory::where('status', 'tampilkan')->orderByDesc('created_at')->take(5)->get();
-        return view('content.home')->with('category',$category);
-        //   return view('entries.show')->with('entries',$entry)->with('random',$random);
+        $category =  AdminCategory::where('status', 'tampilkan')->orderBy('created_at', 'asc')->take(5)->get();
+        $kuskusCount = DB::table('thread')
+            ->leftJoin('kategori_thread', 'thread.id_kategori', '=', 'kategori_thread.id')
+            ->leftJoin('komentar', 'thread.id', '=', 'komentar.id_post')
+            ->select(DB::raw("kategori_thread.jenis_kategori as kategori"), DB::raw("count(thread.id) as thread_count"), DB::raw("count(komentar.id) as komentar_count"))
+            ->groupBy("kategori_thread.jenis_kategori")
+            ->get();
+        $iklan =  DB::table('iklan')->take(2)->get();
+        $hotthread = DB::table('thread')
+        ->leftJoin('kategori_thread', 'thread.id_kategori', '=', 'kategori_thread.id')
+        ->leftJoin('users', 'thread.id_user', '=', 'users.id')
+        ->select(DB::raw("kategori_thread.jenis_kategori as kategori"), DB::raw("thread.judul as judul"), DB::raw("users.fullname as namauser"), DB::raw("thread.created_at as waktupost"))
+        ->groupBy("thread.id")
+        ->get();
+        return view('content.home')->with('category',$category)->with('kuskusCount',$kuskusCount)->with('iklan',$iklan)->with('hotthread',$hotthread);
     }
 
     public function login(){
