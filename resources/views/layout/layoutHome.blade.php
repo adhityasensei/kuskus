@@ -6,9 +6,12 @@
 @include('template.banner')
 <!-- subnav-->
 @include('template.subnav')
+<!-- Section kiri-->
+@include('content.leftcontent')
 <!-- Section content-->
 @yield('content')
 <!-- Section kanan-->
-@yield('content.rightcontent')
+@include('content.rightcontent')
 <!-- Footer-->
-@include('template.footer')
+</div>
+{{-- @include('template.footer') --}}
