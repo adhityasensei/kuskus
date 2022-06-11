@@ -22,7 +22,17 @@
             clear: both;
             display: table;
             }
+            html {
+                position: relative;
+                min-height: 100%;
+            }
+            .footer {
+                width: 100%;
+                height: 2.5rem;
+                position: absolute;
+                bottom: 0px; left: 0;
+            }
         </style>
     </head>
 
-    <body>
+    <body style="background-color: #e9ebee;">

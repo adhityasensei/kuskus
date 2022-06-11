@@ -6,6 +6,7 @@
 @include('template.banner')
 <!-- subnav-->
 @include('template.subnav')
+<div class="clearfix"></div>
 <!-- Section kiri-->
 @include('content.leftcontent')
 <!-- Section content-->
@@ -14,4 +15,4 @@
 @include('content.rightcontent')
 <!-- Footer-->
 </div>
-{{-- @include('template.footer') --}}
+@include('template.footer')

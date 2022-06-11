@@ -21,7 +21,7 @@
                 <li class="nav-item"><span class="nav-link">|</span></li>
                 @if(Auth::check())
                 <li class="nav-item dropdown">
-                    <div style="width: 22px;float: left;margin-top: 5px;margin-right: 10px;"><img style="width:100%" src="{{Auth::user()->foto}}" alt="Italian Trulli"></div>
+                    <div class="clearfix" style="width: 22px;float: left;margin-top: 5px;margin-right: 10px;"><img style="width:100%" src="{{Auth::user()->foto}}" alt="Italian Trulli"></div>
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{Auth::user()->fullname}}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @if(Auth::user()->role == 'admin')
