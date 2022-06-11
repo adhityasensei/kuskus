@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('role',['user', 'manager', 'admin'])
-            ->default('user');
-            $table->string('foto');
-            $table->string('deskripsi');
+        Schema::create('iklan', function (Blueprint $table) {
+            $table->id();
+            $table->string('judul_iklan');
+            $table->longText('deskripsi');
+            $table->string('foto');$table->string('foto')->default('foto/iklan/Default_Iklan.png');
+            $table->string('created_by');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('iklan');
     }
 };

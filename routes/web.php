@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController;
-use Illuminate\Routing\Controller;
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,40 +17,29 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    if(Auth::user()){
-        return Auth::user()->name . ' - ' . Auth::user()->email . ' - ' .'<img src="'.Auth::user()->foto.'" /> </br> <a href="/logout">Logout</a>';
-    } else {
-        return view('form_login');
-    }
-});
+//Route View
+Route::get('/', [WebController::class, 'index']);
+Route::get('/channel/{var1}', [WebController::class, 'category']);
+Route::get('/admin', [WebController::class, 'admin']);
+Route::get('/login', [WebController::class, 'login']);
+Route::get('/formuser', [WebController::class, 'formUser']);
+Route::get('/newpost', [WebController::class, 'newPost']);
+Route::get('/formkategori', [WebController::class, 'formKategori']);
+Route::get('/edituser', [WebController::class, 'editUser']);
+Route::get('/formiklan', [WebController::class, 'formiklan']);
 
-//form login
-Route::get('/home', function(){
-    return view('form_login');
-});
-
-//form register
-Route::get('/daftar', function(){
-    return view('form_register');
-});
-
-//Percobaan ID Kategori
-Route::get('/kategori', function(){
-    return view ('id_kategori');
-});
-
-
-//Authenticate
-Route::post('/login', [LoginController::class, 'authenticate']);
+//Route Function Login
+Route::post('/doLogin', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-// Controller Login
-Route::get('/login',[LoginController::class,'login']);
-Route::post('/login/auth',[LoginController::class,'auth_process']);
+//Route Function All Role
+Route::post('/createPost', [WebController::class, 'createPost']);
 
-Route::get('/register',[LoginController::class,'register']);
-Route::post('/register/add',[LoginController::class,'add_user']);
+//Route Function User
+Route::post('/createUser', [UserController::class, 'createUser']);
 
-Route::post('/logout',[LoginController::class,'logout']);
-
+//Route Function Admin
+Route::post('/createUserAdmin', [AdminController::class, 'createUser']);
+Route::get('/getuser', [AdminController::class, 'getAllDataUser']);
+Route::post('/createCategory', [AdminController::class, 'createCategory']);
+Route::post('/createiklan', [AdminController::class, 'createIklan']);

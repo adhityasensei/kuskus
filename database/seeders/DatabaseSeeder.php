@@ -15,30 +15,57 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+ 
         DB::table('users')->insert([
-            'name' => 'Dhemas',
+            'fullname' => 'Adhitya Nugroho',
+            'username' => 'Kurokuro',
+            'email' => 'kurokuro@pegadaian.com',
+            'password' => bcrypt('gadai123'),
+            'deskripsi' => 'super_admin',
+            'role' => 'admin',
+            'status' => 'active',
+            
+    ]);
+        DB::table('users')->insert([
+            'fullname' => 'Dhemas',
+            'username' => 'Dhemas',
             'email' => 'dhemas@pegadaian.com',
             'password' => bcrypt('12345678'),
-            'role' => 'admin',
             'deskripsi' => 'ok',
-            'foto' => 'https://ichef.bbci.co.uk/news/640/cpsprodpb/02F9/production/_104516700_3_spongebob_squarepants__hr.jpg',
+            'role' => 'admin',
+            'status' => 'active',
     ]);
-        DB::table('users')->insert([
-        'name' => 'Aditya',
-        'email' => 'aditya@pegadaian.com',
-        'password' => bcrypt('12345678'),
-        'role' => 'admin',
-        'deskripsi' => 'ok',
-        'foto' => 'https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2020/09/05/173528969.jpg',
+    DB::table('kategori_thread')->insert([
+        'jenis_kategori' => 'HOT THREAD',
+        'status' => 'tampilkan',
     ]);
-
-    // Db::table('comment')
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-    // }
+    DB::table('kategori_thread')->insert([
+        'jenis_kategori' => 'MASAKAN INDONESIA',
+        'status' => 'tampilkan',
+    ]);
+    DB::table('kategori_thread')->insert([
+        'jenis_kategori' => 'MASAKAN WESTERN',
+        'status' => 'tampilkan',
+    ]);
+    DB::table('kategori_thread')->insert([
+        'jenis_kategori' => 'MASAKAN ASIA',
+        'status' => 'tampilkan',
+    ]);
+    DB::table('kategori_thread')->insert([
+        'jenis_kategori' => 'MASAKAN ASIA',
+        'status' => 'tampilkan',
+    ]);
+    DB::table('iklan')->insert([
+        'judul_iklan' => 'Test Iklan',
+        'deskripsi' => 'jualan iklan',
+        'created_by' => '2',
+    ]);
+    DB::table('thread')->insert([
+        'id_kategori' => '3',
+        'judul' => 'Cangcimen',
+        'isi_thread' => 'lorem ipsum test test test',
+        'id_user' => '1',
+        'status' => 'tampilkan',
+    ]);
     }
 }
